@@ -32,17 +32,17 @@ def climate_data(cubelist):
 
 def main():
     courtroom_df = pd.read_csv(
-        "/home/h04/gmunday/Documents/Hackathons/climate-data-challenge-22/data/courtroom_coords.csv",
+        "data/courtroom_coords.csv",
          encoding='cp1252')
     
-    cubelist = iris.load(['/home/h04/gmunday/Documents/Hackathons/climate-data-challenge-22/data/*nc'])
+    cubelist = iris.load(['data/*nc'])
     
     court_long, court_lat = courtrooms_data(courtroom_df)
 
     tas = climate_data(cubelist)
     
-    # qplt.pcolormesh(tas[0, 0])
-    plt.scatter(court_long, court_lat, 'bo')
+    qplt.pcolormesh(tas[0, 0])
+    # plt.scatter(court_long, court_lat, 'bo')
     plt.show()
 
 
