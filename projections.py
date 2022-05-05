@@ -1,14 +1,12 @@
 import numpy as np
 import iris
 from iris.util import equalise_attributes
-from iris.coords import DimCoord
+import iris.util
 import iris.cube
-import iris.quickplot as qplt
-import iris.plot as iplt
 import matplotlib.pyplot as plt
 import pandas as pd
 import cartopy.crs as ccrs
-import math
+import cartopy.feature as cfeature
 
 
 def courtrooms_data(courtroom_df):
@@ -43,21 +41,6 @@ def mercator_from_lat_long(lats, lons):
         return (x, y)
 
 
-# def make_cube(x, y):
-#     courts = np.empty(len(x))
-    
-#     latitude = DimCoord(y, standard_name='latitude', units='degrees')
-#     longitude = DimCoord(x, standard_name='longitude', units='degrees')
-
-#     dim_coords_and_dims = [(latitude, 0), (longitude, 1)] 
-    
-#     courts_cube = iris.cube.Cube(courts,
-#                                  dim_coords_and_dims=dim_coords_and_dims,
-#                                  var_name="courts")
-
-#     return courts_cube
-
-
 def main():
     courtroom_df = pd.read_csv(
         "data/courtroom_coords.csv",
@@ -80,13 +63,27 @@ def main():
     tas_long = tas.coord("longitude").points
     tas_lat = tas.coord("latitude").points
     
-    transform = ccrs.PlateCarree()
+    # mask = np.ma.getmask(tas.data)
+    # masked_array = np.ma.masked_array(tas.data, mask=mask)
+    # tas_masked = tas.copy(data=masked_array)
+
+    ten_metre_borders = cfeature.NaturalEarthFeature(category='cultural',
+        name='admin_0_countries',
+        scale='10m',
+        facecolor = 'none')
     
+    transform = ccrs.PlateCarree()
+
     for i in range(0, 59):
+        plt.figure(figsize=(6, 8))
         ax = plt.axes(projection=ccrs.OSGB())
-        ax.pcolormesh(tas_long, tas_lat, tas[0, i].data, transform=transform, zorder=2)
-        ax.plot(court_long, court_lat, 'k*', transform=transform, markersize=1, zorder=20)
-        ax.set_title(str(tas[0, i].coord("year").points))
+        im = ax.pcolormesh(tas_long, tas_lat, tas[0, i].data, transform=transform, vmin=0, vmax=18)
+
+        ax.plot(court_long, court_lat, 'ro', transform=transform, markersize=2)
+        
+        plt.colorbar(im, orientation='vertical', label="Air Temperature / C\u00B0")
+        ax.add_feature(ten_metre_borders)
+        ax.set_title("Average Annual Temperature with Courtooms, " + str(tas[0, i].coord("year").points))
         plt.savefig("plots/" + str(tas[0, i].coord("year").points) + ".png")
         plt.close()
 
