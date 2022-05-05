@@ -72,7 +72,7 @@ Figure 1. Temperature map of UKCP climate projection RCP8.5 to 2080, showing loc
 
 <img src="courtroom_temp.png" height="400">
 
-Figure 2. An example projected time series to 2080 of air temperature at Newport Immigration and Asylum Centre, under RCP8.5.
+Figure 2. An example projected time series to 2080 of air temperature at Newport Immigration and Asylum Centre, under RCP8.5. Jumps in the data are visible, and are due to the nature of the UKCP datasets being time-sliced into 20 year chunks over the scenario. 
 
 Tabulated temperature projections for all court building locations in England and Wales are available at: 
 
