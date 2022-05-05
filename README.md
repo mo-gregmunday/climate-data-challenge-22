@@ -68,7 +68,7 @@ As a first step towards this, we have produced tabulated time series of air temp
 
 <img src="courtroom_projections.gif" height="600">
 
-Figure 1. Temperature map of UKCP climate projection RCP8.5 to 2080, showing locations of court buildings in England and Wales.
+Figure 1. Temperature map of UKCP climate projection RCP8.5 to 2080, showing locations of court buildings in England and Wales. This was plotted using [projections.py](https://github.com/mo-gregmunday/climate-data-challenge-22/blob/main/projections.py) with [these data on climate projections and court building locations](https://github.com/mo-gregmunday/climate-data-challenge-22/tree/main/data)
 
 <img src="newport_Ttimeseries.png" height="400">
 
@@ -76,6 +76,7 @@ Figure 2. An example projected time series to 2080 of air temperature at Newport
 
 Tabulated temperature projections for all court building locations in England and Wales are available at: 
 
+Link to tables.
 
 ### 3.4 Actions to adapt to impacts of building discomfort
 Note the analysis described above is valid for the case where no changes are made to courtrooms: no retrofitting of window shading, installation of air conditioning, nor behavioural change such as regularly opening windows. The results would be a measure of what should be avoided in future.
