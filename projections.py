@@ -8,6 +8,7 @@ import iris.plot as iplt
 import matplotlib.pyplot as plt
 import pandas as pd
 import cartopy.crs as ccrs
+import math
 
 
 def courtrooms_data(courtroom_df):
@@ -71,17 +72,21 @@ def main():
     court_long = court_long.to_list()
     court_lat = court_lat.to_list()
     
-    court_long = [float(x) for x in court_long]
-    court_lat = [float(x) for x in court_lat]
-
+    court_long = np.array([float(x) for x in court_long])
+    court_lat = np.array([float(x) for x in court_lat])
+    
     x, y = mercator_from_lat_long(np.array([float(x) for x in court_long]), 
                                   np.array([float(x) for x in court_lat]))
+
+    tas_long = tas.coord("longitude").points
+    tas_lat = tas.coord("latitude").points
     
-
-    qplt.pcolormesh(tas[0, 0], zorder=2)
-    plt.plot(x, y, 'bo', markersize=0.4, zorder=20)
+    transform = ccrs.PlateCarree()
+    
+    ax = plt.axes(projection=ccrs.OSGB())
+    ax.pcolormesh(tas_long, tas_lat, tas[0, 0].data, transform=transform)
+    ax.plot(court_long, court_lat, 'bo', markersize=1, zorder=20)
     plt.show()
-
 
 if __name__ == '__main__':
     main()
