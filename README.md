@@ -60,11 +60,11 @@ Indoor temperature and humidity can be measured in the present-day climate and r
 
 With these estimated projections, it would be possible to use the coefficients derived in the separate regression analysis described in section 3.2, to estimate how the metrics of judicial process effectiveness might change in response to climate change.
 
-As a first step towards this, we have produced tabulated time series of temperature and humidity at the locations of all court buildings in the UK. The time series span 80 years at monthly intervals, and are derived from UKCP climate projections RCP 8.5 and .
+As a first step towards this, we have produced tabulated time series of temperature and humidity at the locations of all court buildings in the UK. The time series span 80 years at monthly intervals, and are derived from UKCP climate projection RCP 8.5.
 
 <img src="courtroom_projections.gif" height="600">
-Link to tables.
 
+Link to tables.
 
 ### 3.4 Actions to adapt to impacts of building discomfort
 Note the analysis described above is valid for the case where no changes are made to courtrooms: no retrofitting of window shading, installation of air conditioning, nor behavioural change such as regularly opening windows. The results would be a measure of what should be avoided in future.
@@ -81,7 +81,7 @@ We recommend the following actions:
 - Find some means of collating data on individual court cases into a tabulated form as suggested in section 3.1 - or indeed, begin recording the data in such a way if it has not been done hitherto;
 - Bring together currently existing efforts to monitor and record metrics of building comfort such as indoor temperature and humidity - in care homes and prisons as well as courtrooms - to use what has been learned so far to systematise the long-term collection of such data in multiple courtrooms;
 - Using such measurements together with existing records of weather variables at court locations, and projections into the future, estimate the expected changes in the building comfort metrics (under the assumption of no adaptation);
-- When enough data on building comfort and individual court case judicial process effectiveness has been obtained, perform a regression analysis to identify is there is any correlation;
+- When enough data on building comfort and individual court case judicial process effectiveness has been obtained, perform a regression analysis to identify if there is any correlation;
 - If there is significantly, project that forwards to estimate the potential future impact of climate change on the administration of justice;
 - Use the findings to direct, inform and justify adaptation measures in UK court buildings.
 
