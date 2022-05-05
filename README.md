@@ -70,7 +70,7 @@ As a first step towards this, we have produced tabulated time series of air temp
 
 Figure 1. Temperature map of UKCP climate projection RCP8.5 to 2080, showing locations of court buildings in England and Wales. This was plotted using [projections.py](https://github.com/mo-gregmunday/climate-data-challenge-22/blob/main/projections.py) with [these data on climate projections and court building locations](https://github.com/mo-gregmunday/climate-data-challenge-22/tree/main/data)
 
-<img src="newport_Ttimeseries.png" height="400">
+<img src="courtroom_projection.png" height="400">
 
 Figure 2. An example projected time series to 2080 of air temperature at Newport Immigration and Asylum Centre, under RCP8.5.
 
