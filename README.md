@@ -30,7 +30,7 @@ Whether this is due to courtrooms in New South Wales and Prague being better ins
 
 
 ## 3. Investigation Proposal
-Question 1 (see above) could be answered by following the methods of [5-7], focusing on Crown Court cases that are heard by a jury, in order to contribute towards question 4 as well. However, the data required to apply these methods to a UK context are not readily available in an easily analysable format. Section 3.1 discusses issues with these data and requirements to make the data usable. Section 3.2 presents one aspect of data that are already available and usable. Section 3.3 brings them together in a suggested method to follow, contingent on all the required data being available.
+Question 1 (see above) could be answered by following the methods of [5-7], focusing on Crown Court cases that are heard by a jury, in order to contribute towards question 4 as well. However, the data required to apply these methods to a UK context are not readily available in an easily analysable format. Section 3.1 discusses issues with these data and requirements to make the data usable. Section 3.2 describes an analysis that could be performed on such data if it can be collected. Section 3.3 presents one aspect of data that are already available and usable, namely future climate projections. Section 3.4 discusses possible implications of findings from the investigation proposed here.
 
 ### 3.1 Issues with available data
 UK court statistics are reported quarterly [8-9] - e.g. percentage of guilty verdicts, effective vs. cracked vs. ineffective cases, time between arrival to completion of cases in a Crown Court. These are aggregated rather than individual cases.
@@ -48,7 +48,7 @@ As well as being more conducive to regression analysis, such data would contribu
 
 The thinking behind these variables is that they may indicate inefficiencies or improper procedure in some way. Though it is not possible to truly quantify something as abstract as the effectiveness of justice, there may also be other proxies worth considering beyond those suggested here.
 
-Question 2 is motivated by the observation that indoor comfort (temperature, humidity) may be more relevant as independent variables than the weather variables examined in [5-7]. They would be related to outdoor weather, but likely strongly dependent on the conditions of each court building. A methodology inspired by measurements in care homes [11] could be followed to log the indoor temperature and humidity in a number of courtrooms. This would be need to be done over the course of at least one year, to capture seasonal variations.
+Question 2 is motivated by the observation that indoor comfort (temperature, humidity) may be more relevant as independent variables than the weather variables examined in [5-7]. They would be related to outdoor weather, but likely strongly dependent on the conditions of each court building. A methodology inspired by measurements in care homes [11] could be followed to log the indoor temperature and humidity in a number of courtrooms, date/time-stamped so they can be matched against court cases and outdoor weather variables that are already being monitored. This would be need to be done over the course of at least one year, to capture seasonal variations.
 
 ### 3.2 Regression of judicial process effectiveness against indoor temperature and humidity
 With data collected as described above, ideally over a number of years, it would be possible to perform a regression analysis [5-7] to find what relation if any between the independent (building comfort) and dependent (judicial process effectiveness) variables.
@@ -69,12 +69,21 @@ Link to tables.
 ### 3.4 Actions to adapt to impacts of building discomfort
 Note the analysis described above is valid for the case where no changes are made to courtrooms: no retrofitting of window shading, installation of air conditioning, nor behavioural change such as regularly opening windows. The results would be a measure of what should be avoided in future.
 
+Actions to adapt to such conditions are already in motion, as part of an initiative to improve the UK court building stock [3]. One of these adaptations is increased use of video conferencing, which ties in to question 6, above. As well as reducing carbon emissions from transport to and from the courts, remote or hybrid hearings can reduce exposure of participants to the conditions inside the courtrooms - the question then is whether these conditions are better or worse in the buildings from which remote participants join the hearings.
 
+The contribution of the research proposed here is to potentially strengthen the case for adaptation measures in UK court buildings. That is, if an adverse impact on the judicial process due to climate change can be found and confidently quantified, it would further justify the expenditure on retrofitting buildings across the estate: as well as saving CO2 emissions, financial cost on energy bills, and maintaining the health and welfare of participants in the judicial process, there may be a benefit to the effectiveness of the administration of justice. This is an aspect that has not been thoroughly investigated in a UK context so far.
 
-Already in motion [3]
-6,7
+If a null result is found, then far from negating current and future retrofitting efforts, it should provide reassurance that the administration of justice in the UK would not be unduly affected by climate change. The numerous other reasons to work towards net-zero in the courts while respecting human comfort and health within them, all remain valid.
+
 
 ## 4. Conclusions
+We recommend the following actions:
+- Find some means of collating data on individual court cases into a tabulated form as suggested in section 3.1 - or indeed, begin recording the data in such a way if it has not been done hitherto;
+- Bring together currently existing efforts to monitor and record metrics of building comfort such as indoor temperature and humidity - in care homes and prisons as well as courtrooms - to use what has been learned so far to systematise the long-term collection of such data in multiple courtrooms;
+- Using such measurements together with existing records of weather variables at court locations, and projections into the future, estimate the expected changes in the building comfort metrics (under the assumption of no adaptation);
+- When enough data on building comfort and individual court case judicial process effectiveness has been obtained, perform a regression analysis to identify is there is any correlation;
+- If there is significantly, project that forwards to estimate the potential future impact of climate change on the administration of justice;
+- Use the findings to direct, inform and justify adaptation measures in UK court buildings.
 
 
 ## 5. References
@@ -95,15 +104,9 @@ https://www.standard.co.uk/news/uk/westminster-magistrates-court-heatwave-lawyer
 
 [8] GOV.UK, "Criminal Courts", accessed 4 May 2022. https://data.justice.gov.uk/courts/criminal-courts
 
-[9] https://public.tableau.com/app/profile/moj.analysis/viz/CJSScorecard/Introduction
+[9] MoJ Analysis, "Criminal Justice System Scorecard", March 2022. https://public.tableau.com/app/profile/moj.analysis/viz/CJSScorecard/Introduction
 
-[10] https://tribunalsdecisions.service.gov.uk/utiac?utf8=%E2%9C%93&search%5Bquery%5D=&search%5Breported%5D=true&search%5Bcountry%5D=&search%5Bcountry_guideline%5D=0&search%5Bjudge%5D=&search%5Bclaimant%5D=
+[10] GOV.UK, "Immigration and asylum chamber: decisions on appeals to the Upper Tribunal", accessed 4 May 2022. https://tribunalsdecisions.service.gov.uk/utiac?utf8=%E2%9C%93&search%5Bquery%5D=&search%5Breported%5D=true&search%5Bcountry%5D=&search%5Bcountry_guideline%5D=0&search%5Bjudge%5D=&search%5Bclaimant%5D=
 
-[11] https://www.london.gov.uk/sites/default/files/recommendationsreport_carehomeoverheatingauditpilot_200713.pdf
-
-NI Direct, "Attending court as a juror", accessed 4 May 2022. https://www.nidirect.gov.uk/articles/attending-court-juror
-
-
-
-
-
+[11] Oikonomou, E., Raslan, R., Gupta, R., Howard, A., Mavrogianni, A. (2020). "Care Home Overheating Audit Pilot Project - Recommendations Report". *Mayor of London, GLA,
+London, UK* . https://www.london.gov.uk/sites/default/files/recommendationsreport_carehomeoverheatingauditpilot_200713.pdf
