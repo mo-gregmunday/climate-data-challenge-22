@@ -1,11 +1,14 @@
 import numpy as np
 import iris
 from iris.util import equalise_attributes
+from iris.coords import DimCoord
 import iris.cube
 import iris.quickplot as qplt
 import iris.plot as iplt
 import matplotlib.pyplot as plt
 import pandas as pd
+import cartopy.crs as ccrs
+
 
 def courtrooms_data(courtroom_df):
     df = pd.DataFrame(courtroom_df)
@@ -30,6 +33,30 @@ def climate_data(cubelist):
     return tas
 
 
+def mercator_from_lat_long(lats, lons):
+        r_major = 6378137.000
+        x = r_major*np.radians(lons)
+        scale = x/lons
+        y = 180.0/np.pi*np.log(np.tan(np.pi/4.0+lats*(np.pi/180.0)/2.0))*scale
+        
+        return (x, y)
+
+
+# def make_cube(x, y):
+#     courts = np.empty(len(x))
+    
+#     latitude = DimCoord(y, standard_name='latitude', units='degrees')
+#     longitude = DimCoord(x, standard_name='longitude', units='degrees')
+
+#     dim_coords_and_dims = [(latitude, 0), (longitude, 1)] 
+    
+#     courts_cube = iris.cube.Cube(courts,
+#                                  dim_coords_and_dims=dim_coords_and_dims,
+#                                  var_name="courts")
+
+#     return courts_cube
+
+
 def main():
     courtroom_df = pd.read_csv(
         "data/courtroom_coords.csv",
@@ -41,8 +68,18 @@ def main():
 
     tas = climate_data(cubelist)
     
-    qplt.pcolormesh(tas[0, 0])
-    # plt.scatter(court_long, court_lat, 'bo')
+    court_long = court_long.to_list()
+    court_lat = court_lat.to_list()
+    
+    court_long = [float(x) for x in court_long]
+    court_lat = [float(x) for x in court_lat]
+
+    x, y = mercator_from_lat_long(np.array([float(x) for x in court_long]), 
+                                  np.array([float(x) for x in court_lat]))
+    
+
+    qplt.pcolormesh(tas[0, 0], zorder=2)
+    plt.plot(x, y, 'bo', markersize=0.4, zorder=20)
     plt.show()
 
 
