@@ -21,8 +21,8 @@ def courtrooms_data(courtroom_df):
     coords = df.iloc[:,15]
     coords_split = coords.str.split('|', expand=True)
     
-    court_long = coords_split[1]
-    court_lat = coords_split[0]
+    court_long = coords_split[0]
+    court_lat = coords_split[1]
 
     return court_long.dropna(), court_lat.dropna()
 
@@ -63,7 +63,7 @@ def main():
         "data/courtroom_coords.csv",
          encoding='cp1252')
     
-    cubelist = iris.load(['data/*nc'])
+    cubelist = iris.load(['data/annual/*nc'])
     
     court_long, court_lat = courtrooms_data(courtroom_df)
 
@@ -74,19 +74,19 @@ def main():
     
     court_long = np.array([float(x) for x in court_long])
     court_lat = np.array([float(x) for x in court_lat])
-    
-    x, y = mercator_from_lat_long(np.array([float(x) for x in court_long]), 
-                                  np.array([float(x) for x in court_lat]))
 
     tas_long = tas.coord("longitude").points
     tas_lat = tas.coord("latitude").points
     
     transform = ccrs.PlateCarree()
     
-    ax = plt.axes(projection=ccrs.OSGB())
-    ax.pcolormesh(tas_long, tas_lat, tas[0, 0].data, transform=transform)
-    ax.plot(court_long, court_lat, 'bo', markersize=1, zorder=20)
-    plt.show()
+    for i in range(0, 59):
+        ax = plt.axes(projection=ccrs.OSGB())
+        ax.pcolormesh(tas_long, tas_lat, tas[0, i].data, transform=transform, zorder=2)
+        ax.plot(court_long, court_lat, 'k*', transform=transform, markersize=1, zorder=20)
+        ax.set_title(str(tas[0, i].coord("year").points))
+        plt.savefig("plots/" + str(tas[0, i].coord("year").points) + ".png")
+        plt.close()
 
 if __name__ == '__main__':
     main()
