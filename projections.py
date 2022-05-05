@@ -63,11 +63,13 @@ def main():
         "data/courtroom_coords.csv",
          encoding='cp1252')
     
-    cubelist = iris.load(['data/annual/*nc'])
+    annual_cubelist = iris.load(['data/annual/*nc'])
+    monthly_cubelist = iris.load(['data/monthly/*nc'])
     
     court_long, court_lat = courtrooms_data(courtroom_df)
 
-    tas = climate_data(cubelist)
+    # annual tas
+    tas = climate_data(annual_cubelist)
     
     court_long = court_long.to_list()
     court_lat = court_lat.to_list()
