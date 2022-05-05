@@ -58,8 +58,10 @@ def find_lat_lon(our_lat, our_lon, map_latitude, map_longitude):
 
     for iter_int in range(18):
         # now find the mid points of the i and j we 
-        imid=int(np.floor((imin+imax)/2));imid1=int(np.floor((imin+imid)/2));imid2=int(np.floor((imid+imax)/2));
-        jmid=int(np.floor((jmin+jmax)/2));jmid1=int(np.floor((jmin+jmid)/2));jmid2=int(np.floor((jmid+jmax)/2));
+        imid=int(np.floor((imin+imax)/2));imid1=int(np.floor((imin+imid)/2)); \
+            imid2=int(np.floor((imid+imax)/2));
+        jmid=int(np.floor((jmin+jmax)/2));jmid1=int(np.floor((jmin+jmid)/2)); \
+            jmid2=int(np.floor((jmid+jmax)/2));
 
         # start with 2 i boxes, and keep j constant
         # get the location of the mid points
@@ -71,7 +73,8 @@ def find_lat_lon(our_lat, our_lon, map_latitude, map_longitude):
 
         # here we compare the haversine distance of our point to the mid point of the 2 splits
         # we then choose our imax and imin on the basis of the box that is closest
-        if distance(pt['lat'][0],pt['lon'][0],our_lat,our_lon) > distance(pt['lat'][1],pt['lon'][1],our_lat,our_lon):
+        if distance(pt['lat'][0],pt['lon'][0],our_lat,our_lon) > \
+            distance(pt['lat'][1],pt['lon'][1],our_lat,our_lon):
             imin = imid
             imax = imax
         else:
@@ -79,8 +82,10 @@ def find_lat_lon(our_lat, our_lon, map_latitude, map_longitude):
             imax=imid
             
         # now find the mid points again
-        imid=int(np.floor((imin+imax)/2));imid1=int(np.floor((imin+imid)/2));imid2=int(np.floor((imid+imax)/2));
-        jmid=int(np.floor((jmin+jmax)/2));jmid1=int(np.floor((jmin+jmid)/2));jmid2=int(np.floor((jmid+jmax)/2)); # this is redundant
+        imid=int(np.floor((imin+imax)/2));imid1=int(np.floor((imin+imid)/2)); \
+            imid2=int(np.floor((imid+imax)/2));
+        jmid=int(np.floor((jmin+jmax)/2));jmid1=int(np.floor((jmin+jmid)/2)); \
+            jmid2=int(np.floor((jmid+jmax)/2)); # this is redundant
 
         # now 2 j boxes keeping our i constant
         # get the location of the mid points
@@ -92,7 +97,8 @@ def find_lat_lon(our_lat, our_lon, map_latitude, map_longitude):
 
         # and compare the distance of our point to the 2 boxes
         # then redefine the jmax and jmin
-        if distance(pt['lat'][0],pt['lon'][0],our_lat,our_lon) > distance(pt['lat'][1],pt['lon'][1],our_lat,our_lon):
+        if distance(pt['lat'][0],pt['lon'][0],our_lat,our_lon) > \
+            distance(pt['lat'][1],pt['lon'][1],our_lat,our_lon):
             jmin = jmid
             imax = jmax
         else:
@@ -132,13 +138,16 @@ def plotting_gif(tas_long, tas_lat, tas, court_long, court_lat):
     for i in range(0, 59):
         plt.figure(figsize=(6, 8))
         ax = plt.axes(projection=ccrs.OSGB())
-        im = ax.pcolormesh(tas_long, tas_lat, tas[0, i].data, transform=transform, vmin=0, vmax=18)
+        im = ax.pcolormesh(tas_long, tas_lat, 
+                        tas[0, i].data, transform=transform, vmin=0, vmax=18)
 
         ax.plot(court_long, court_lat, 'ro', transform=transform, markersize=2)
         
-        plt.colorbar(im, orientation='vertical', label="Air Temperature / C\u00B0")
+        plt.colorbar(im, orientation='vertical', \
+            label="Air Temperature / C\u00B0")
         ax.add_feature(ten_metre_borders)
-        ax.set_title("Average Annual Temperature with Courtooms, " + str(tas[0, i].coord("year").points))
+        ax.set_title("Average Annual Temperature with Courtooms, " + \
+                     str(tas[0, i].coord("year").points))
         plt.savefig("plots/" + str(tas[0, i].coord("year").points) + ".png")
         plt.close()
 
@@ -171,7 +180,7 @@ def courtroom_temps(tas_long, tas_lat, tas, court_long, court_lat, courtroom_df)
     plt.title('Projected mean temperature for ' + courtroom_df.Sitename[i_court])
     plt.ylabel('Temperature ($^{\circ}$C)')
     plt.xlabel('Year')
-    plt.savefig('courtroom_temp.png')
+    plt.savefig('plots/courtroom_temp.png')
 
 
 def main():
@@ -184,7 +193,7 @@ def main():
     
     court_long, court_lat = courtrooms_data(courtroom_df)
 
-    # annual and monthly tas
+    # annual and monthly tas, switch accordingly
     tas_annual = climate_data(annual_cubelist)
     tas_monthly = climate_data(monthly_cubelist)
     
@@ -197,7 +206,8 @@ def main():
     # tas_masked = tas.copy(data=masked_array)
     
     plotting_gif(tas_long, tas_lat, tas_annual, court_long, court_lat)
-    courtroom_temps(tas_long, tas_lat, tas_annual, court_long, court_lat, courtroom_df)
+    courtroom_temps(tas_long, tas_lat, tas_annual, 
+                    court_long, court_lat, courtroom_df)
 
 
 if __name__ == '__main__':
