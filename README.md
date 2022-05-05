@@ -1,15 +1,19 @@
 # climate-data-challenge-22
-Repository for the Climate Data Challenge, 2022.
+Julie Clouder<sup>(a)</sup>, Gregory Munday<sup>(b)</sup>, William Roberts<sup>(c)</sup>, Susan Sun<sup>(b)</sup>
+
+(a) Ministry of Justice<br>
+(b) Met Office<br>
+(c) University of Northumbria
 
 ## 1. Introduction
-This project focuses on thermal discomfort in courtrooms, as one potential impact of climate change on the administration of justice. Climate change poses an increasing risk of overheating buildings, due to increasing outdoor temperatures. At the other extreme, burning fossil fuels to heat cold buildings in winter contributes to climate change, through CO2 emissions.
+This project focuses on thermal discomfort in courtrooms, as one potential impact of climate change on the administration of justice. Climate change poses an increasing risk of overheating buildings, due to increasing outdoor temperatures. At the other extreme, burning fossil fuels such as natural gas to heat cold buildings in winter contributes to climate change, through CO<sub>2</sub> emissions.
 
 In section 2, we review the literature on the impacts of weather on court decisions, identifying questions of interest based on gaps in the knowledge base. In section 3, we propose an investigation to answer some of these questions. Our recommendations are summarised in section 4.
 
 ## 2. Literature Review
 Summer heatwaves are becoming increasingly common. They are already causing discomfort and disruptions to court proceedings, as reported in the media [1]. In the UK climate, more focus has understandably been placed on heating cold buildings, for example in the care homes sector [2]. There are laudable efforts to improve insulation and energy efficiency in UK court buildings [3] as part of the drive towards net-zero carbon emissions - these efforts  must also take into account the risk of summer overheating in a warming world. As well as the human welfare aspects of thermal comfort, could there be a measurable impact on the administration of justice?
 
-There is much literature on the effects of weather on mood and cognition in general, which could both affect decision-making. In particular, a study by Gockel, Kolb and Werth [4] varied the ambient temperature between 19.9 and 26.8 deg.C and measured the effect on 133 students' judgement of whether a particular crime described to them was murder or manslaughter. Colder temperatures significantly increased the likelihood of judging the crime to be murder.
+There is much literature on the effects of weather on mood and cognition in general, which could both affect decision-making. In particular, a study by Gockel, Kolb and Werth [4] varied the ambient temperature between 19.9 and 26.8 <sup>o</sup>C and measured the effect on 133 students' judgement of whether a particular crime described to them was murder or manslaughter. Colder temperatures significantly increased the likelihood of judging the crime to be murder.
 
 Heyes and Saberian [5] found a substantial impact of outdoor temperature on judge decisions in immigration hearings and parole panels in the USA (2000-2004), though in the opposite direction. Out of 207 000 cases analysed, they found a 1.4 %-pt decrease in the granting of asylum or parole for every standard deviation increase in temperature (controlling for rainfall, sunlight hours, pollution and other fixed effects). This amounts to 8.56 % of the current average rate of granting asylum or parole.
 
@@ -24,9 +28,9 @@ Whether this is due to courtrooms in New South Wales and Prague being better ins
 2. What about the impacts of indoor temperature and humidity, as opposed to outdoor weather?
 3. How will any potential impacts project into the future, in a warmer, less predictable climate?
 4. Are juries more susceptible to such effects than judges?
-5. What other metrics of judicial process effectiveness can be examined, other than guilty verdict likelihood and sentence severity - e.g. duration of crime, likelihood of a decision being appealed, or of an appeal being upheld?
-6. What are the implications of increasing remote or virtual participation in trials and hearings?
-7. What costs and savings (financial and CO2) would be associated with retrofitting UK court buildings to a standard that minimises unwanted effects on decision-making within them?
+5. What other metrics of judicial process effectiveness can be examined, other than guilty verdict likelihood and sentence severity - e.g. duration of trial, likelihood of a decision being appealed, or of an appeal being upheld?
+6. What are the implications of increasing remote participation in trials and hearings?
+7. What costs and savings (financial and CO<sub>2</sub>) would be associated with retrofitting UK court buildings to a standard that minimises unwanted effects on decision-making within them?
 
 
 ## 3. Investigation Proposal
@@ -48,7 +52,7 @@ As well as being more conducive to regression analysis, such data would contribu
 
 The thinking behind these variables is that they may indicate inefficiencies or improper procedure in some way. Though it is not possible to truly quantify something as abstract as the effectiveness of justice, there may also be other proxies worth considering beyond those suggested here.
 
-Question 2 is motivated by the observation that indoor comfort (temperature, humidity) may be more relevant as independent variables than the weather variables examined in [5-7]. They would be related to outdoor weather, but likely strongly dependent on the conditions of each court building. A methodology inspired by measurements in care homes [11] could be followed to log the indoor temperature and humidity in a number of courtrooms, date/time-stamped so they can be matched against court cases and outdoor weather variables that are already being monitored. This would be need to be done over the course of at least one year, to capture seasonal variations.
+Question 2 is motivated by the observation that indoor comfort (temperature, humidity) may be more relevant as independent variables than the weather variables examined in [5-7]. They would be related to outdoor weather, but likely strongly dependent on the conditions of each court building. A methodology inspired by measurements in care homes [11] could be followed to log the indoor temperature and humidity in a number of courtrooms, date/time-stamped so they can be matched against court cases and outdoor weather variables that are already being monitored. This would need to be done over the course of at least one year, to capture seasonal variations.
 
 ### 3.2 Regression of judicial process effectiveness against indoor temperature and humidity
 With data collected as described above, ideally over a number of years, it would be possible to perform a regression analysis [5-7] to find what relation if any between the independent (building comfort) and dependent (judicial process effectiveness) variables.
@@ -60,9 +64,17 @@ Indoor temperature and humidity can be measured in the present-day climate and r
 
 With these estimated projections, it would be possible to use the coefficients derived in the separate regression analysis described in section 3.2, to estimate how the metrics of judicial process effectiveness might change in response to climate change.
 
-As a first step towards this, we have produced tabulated time series of temperature and humidity at the locations of all court buildings in the UK. The time series span 80 years at monthly intervals, and are derived from UKCP climate projection RCP 8.5.
+As a first step towards this, we have produced tabulated time series of air temperature at the locations of all court buildings in England and Wales. The time series extends to 2080, and is derived from UKCP climate projection RCP 8.5. It is advisable to also consider more likely (less extreme) RCP projections, humidity as well as temperature, and temporal resolution as fine-grained as daily, to capture short heatwave events.
 
 <img src="courtroom_projections.gif" height="600">
+
+Figure 1. Temperature map of UKCP climate projection RCP8.5 to 2080, showing locations of court buildings in England and Wales. This was plotted using [projections.py](https://github.com/mo-gregmunday/climate-data-challenge-22/blob/main/projections.py) with [these data on climate projections and court building locations](https://github.com/mo-gregmunday/climate-data-challenge-22/tree/main/data)
+
+<img src="newport_Ttimeseries.png" height="400">
+
+Figure 2. An example projected time series to 2080 of air temperature at Newport Immigration and Asylum Centre, under RCP8.5.
+
+Tabulated temperature projections for all court building locations in England and Wales are available at: 
 
 Link to tables.
 
@@ -71,7 +83,7 @@ Note the analysis described above is valid for the case where no changes are mad
 
 Actions to adapt to such conditions are already in motion, as part of an initiative to improve the UK court building stock [3]. One of these adaptations is increased use of video conferencing, which ties in to question 6, above. As well as reducing carbon emissions from transport to and from the courts, remote or hybrid hearings can reduce exposure of participants to the conditions inside the courtrooms - the question then is whether these conditions are better or worse in the buildings from which remote participants join the hearings.
 
-The contribution of the research proposed here is to potentially strengthen the case for adaptation measures in UK court buildings. That is, if an adverse impact on the judicial process due to climate change can be found and confidently quantified, it would further justify the expenditure on retrofitting buildings across the estate: as well as saving CO2 emissions, financial cost on energy bills, and maintaining the health and welfare of participants in the judicial process, there may be a benefit to the effectiveness of the administration of justice. This is an aspect that has not been thoroughly investigated in a UK context so far.
+The contribution of the research proposed here is to potentially strengthen the case for adaptation measures in UK court buildings. That is, if an adverse impact on the judicial process due to climate change can be found and confidently quantified, it would further justify the expenditure on retrofitting buildings across the estate: as well as saving CO<sub>2</sub> emissions, financial cost on energy bills, and maintaining the health and welfare of participants in the judicial process, there may be a benefit to the effectiveness of the administration of justice. This is an aspect that has not been thoroughly investigated in a UK context so far.
 
 If a null result is found, then far from negating current and future retrofitting efforts, it should provide reassurance that the administration of justice in the UK would not be unduly affected by climate change. The numerous other reasons to work towards net-zero in the courts while respecting human comfort and health within them, all remain valid.
 
