@@ -199,7 +199,6 @@ def main():
     
     annual_cubelist = iris.load(['data/annual/*nc'])
     monthly_cubelist = iris.load(['data/monthly/*nc'])
-    UKmask = iris.load_cube('/project/ukcp/extra/lsm_land-cpm_uk_5km.nc')
     
     court_long, court_lat = courtrooms_data(courtroom_df)
 
