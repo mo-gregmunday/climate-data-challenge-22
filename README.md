@@ -62,7 +62,7 @@ With these estimated projections, it would be possible to use the coefficients d
 
 As a first step towards this, we have produced tabulated time series of temperature and humidity at the locations of all court buildings in the UK. The time series span 80 years at monthly intervals, and are derived from UKCP climate projections RCP 8.5 and .
 
-<img src="courtroom_projections.gif" height="400">
+<img src="courtroom_projections.gif" height="600">
 Link to tables.
 
 
