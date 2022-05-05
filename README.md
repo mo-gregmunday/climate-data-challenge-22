@@ -1,4 +1,4 @@
-# climate-data-challenge-22
+# Thermal Discomfort in Courtrooms - Climate Data Challenge 2022
 Julie Clouder<sup>(a)</sup>, Gregory Munday<sup>(b)</sup>, William Roberts<sup>(c)</sup>, Susan Sun<sup>(b)</sup>
 
 (a) Ministry of Justice<br>
