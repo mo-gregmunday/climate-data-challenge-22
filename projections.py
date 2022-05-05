@@ -1,5 +1,6 @@
 import numpy as np
 import iris
+import iris.quickplot as qplt
 from iris.util import equalise_attributes
 import iris.util
 import iris.cube
@@ -182,6 +183,14 @@ def courtroom_temps(tas_long, tas_lat, tas, court_long, court_lat, courtroom_df)
     plt.xlabel('Year')
     plt.savefig('plots/courtroom_temp.png')
 
+    # saving to csv
+    df={} # a dictionary to put the data ready to output to csv
+    df['time'] = tas.coord("year").points
+    for i_court  in range(len(court_long)):
+        df[courtroom_df.Sitename[i_court]] = court_time_series[i_court]
+
+    return df
+
 
 def main():
     courtroom_df = pd.read_csv(
@@ -190,6 +199,7 @@ def main():
     
     annual_cubelist = iris.load(['data/annual/*nc'])
     monthly_cubelist = iris.load(['data/monthly/*nc'])
+    UKmask = iris.load_cube('/project/ukcp/extra/lsm_land-cpm_uk_5km.nc')
     
     court_long, court_lat = courtrooms_data(courtroom_df)
 
@@ -200,14 +210,11 @@ def main():
     (court_long, court_lat,
      tas_long, tas_lat) = get_lat_long(court_long, court_lat, tas_annual)
     
-    
-    # mask = np.ma.getmask(tas.data)
-    # masked_array = np.ma.masked_array(tas.data, mask=mask)
-    # tas_masked = tas.copy(data=masked_array)
-    
     plotting_gif(tas_long, tas_lat, tas_annual, court_long, court_lat)
-    courtroom_temps(tas_long, tas_lat, tas_annual, 
-                    court_long, court_lat, courtroom_df)
+
+    court_temp_df = pd.DataFrame(courtroom_temps(
+        tas_long, tas_lat, tas_annual, court_long, court_lat, courtroom_df))
+    court_temp_df.to_csv('courts_temp_projections.csv')
 
 
 if __name__ == '__main__':
