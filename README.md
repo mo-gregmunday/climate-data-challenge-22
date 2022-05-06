@@ -1,5 +1,5 @@
 # Thermal Discomfort in Courtrooms - Climate Data Challenge 2022
-Julie Clouder<sup>(a)</sup>, Gregory Munday<sup>(b)</sup>, William Roberts<sup>(c)</sup>, Susan Sun<sup>(b)</sup>
+Julie Clouder<sup>(a)</sup>, Charlotte Davenport<sup>(a)</sup>, Gregory Munday<sup>(b)</sup>, William Roberts<sup>(c)</sup>, Susan Sun<sup>(b)</sup>
 
 (a) Ministry of Justice<br>
 (b) Met Office<br>
