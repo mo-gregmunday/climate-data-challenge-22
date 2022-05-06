@@ -74,9 +74,7 @@ Figure 1. Temperature map of UKCP climate projection RCP8.5 to 2080, showing loc
 
 Figure 2. An example projected time series to 2080 of air temperature at Newport Immigration and Asylum Centre, under RCP8.5. Jumps in the data are visible, and are due to the nature of the UKCP datasets being time-sliced into 20 year chunks over the scenario. 
 
-Tabulated temperature projections for all court building locations in England and Wales are available at: 
-
-[courts_temp_projections.csv](https://github.com/mo-gregmunday/climate-data-challenge-22/blob/main/courts_temp_projections.csv)
+Tabulated temperature projections for all court building locations in England and Wales are available at: [courts_temp_projections.csv](https://github.com/mo-gregmunday/climate-data-challenge-22/blob/main/courts_temp_projections.csv)
 
 ### 3.4 Actions to adapt to impacts of building discomfort
 Note the analysis described above is valid for the case where no changes are made to courtrooms: no retrofitting of window shading, installation of air conditioning, nor behavioural change such as regularly opening windows. The results would be a measure of what should be avoided in future.
