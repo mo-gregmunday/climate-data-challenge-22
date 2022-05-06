@@ -76,7 +76,7 @@ Figure 2. An example projected time series to 2080 of air temperature at Newport
 
 Tabulated temperature projections for all court building locations in England and Wales are available at: 
 
-Link to tables.
+[courts_temp_projections.csv](https://github.com/mo-gregmunday/climate-data-challenge-22/blob/main/courts_temp_projections.csv)
 
 ### 3.4 Actions to adapt to impacts of building discomfort
 Note the analysis described above is valid for the case where no changes are made to courtrooms: no retrofitting of window shading, installation of air conditioning, nor behavioural change such as regularly opening windows. The results would be a measure of what should be avoided in future.
