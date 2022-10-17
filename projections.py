@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
+import re
 
 
 def courtrooms_data(courtroom_df):
@@ -151,6 +152,31 @@ def plotting_gif(tas_long, tas_lat, tas, court_long, court_lat):
                      str(tas[0, i].coord("year").points))
         plt.savefig("plots/" + str(tas[0, i].coord("year").points) + ".png")
         plt.close()
+        
+    
+    
+    fig, ax = plt.subplots(1, 2, figsize=(10,8), subplot_kw={'projection': ccrs.OSGB()})
+    plt.suptitle("Projected Average Annual Temperature with Courtoom Locations", x=0.5, y=0.95, fontsize='x-large')
+    
+    ax[0].pcolormesh(tas_long, tas_lat, 
+        tas[0, 0].data, transform=transform, vmin=0, vmax=18)
+    im = ax[1].pcolormesh(tas_long, tas_lat, 
+        tas[0, 59].data, transform=transform, vmin=0, vmax=18)
+
+    ax[0].plot(court_long, court_lat, 'ro', transform=transform, markersize=2)
+    ax[1].plot(court_long, court_lat, 'ro', transform=transform, markersize=2)
+    ax[0].add_feature(ten_metre_borders)
+    ax[1].add_feature(ten_metre_borders)
+    
+    fig.colorbar(im, ax=ax.ravel().tolist(), fraction=0.06, pad=0.061, orientation='horizontal', \
+        label="Air Temperature / C\u00B0")
+    
+    date1 = re.sub('[^0-9]','', str(tas[0, 0].coord("year").points))
+    date2 = re.sub('[^0-9]','', str(tas[0, 59].coord("year").points))
+    
+    ax[0].set_title(date1)
+    ax[1].set_title(date2)
+    plt.savefig('plots/plot_for_josh.png')
 
 
 def courtroom_temps(tas_long, tas_lat, tas, court_long, court_lat, courtroom_df):
@@ -171,7 +197,7 @@ def courtroom_temps(tas_long, tas_lat, tas, court_long, court_lat, courtroom_df)
     court_lat_UKCP = np.array(court_lat_UKCP) 
 
     court_time_series=[]
-    for i_court  in range(len(court_long)):   
+    for i_court  in range(len(court_long)):
         court_time_series.append(np.squeeze(
             tas.data[:, :, court_locn_on_UKCP_grid[i_court][0], \
                 court_locn_on_UKCP_grid[i_court][1]]))
