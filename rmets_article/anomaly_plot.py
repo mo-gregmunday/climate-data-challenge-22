@@ -101,13 +101,13 @@ def plotting_article_plot(tas, court_long, court_lat):
     
     transform = ccrs.PlateCarree()
     fig, ax = plt.subplots(1, 1, figsize=(7,9), subplot_kw={'projection': ccrs.OSGB()})
-    im = ax.pcolormesh(lon, lat, anomaly.data, transform=transform, cmap='YlOrRd')
+    im = ax.pcolormesh(lon, lat, anomaly.data, transform=transform, cmap='plasma')
 
     ax.plot(court_long, court_lat, 'kx', transform=transform, markersize=4)
     ax.add_feature(ten_metre_borders)
     
     fig.colorbar(im, ax=ax, orientation='vertical', \
-        label="Air Temperature (C\u00B0)")
+        label="2080 air temperature anomaly (C\u00B0)")
     
     plt.tight_layout()
     plt.savefig('rmets_article/plots/anomaly_plot.png')
