@@ -87,9 +87,8 @@ def plotting_article_plot(tas, court_long, court_lat):
     anomaly = tas[59] - baseline
     lon, lat = anomaly.coord('longitude').points, anomaly.coord('latitude').points
     
-    land_mask = iris.load_cube('/data/users/mgrant/ukcp/droughts/data/local/01/TS1/monthly/pr/01_198012-200011_pr.nc')[0]
-    regridded_land_mask = land_mask.regrid(anomaly, iris.analysis.Nearest())
-    anomaly = iris.util.mask_cube(anomaly, regridded_land_mask.data.mask)
+    land_mask = iris.load_cube('/project/ukcp/extra/lsm_land-cpm_uk_5km.nc')
+    anomaly = iris.util.mask_cube(anomaly, land_mask.data.mask)
     
     
     font = {'family': 'sans-serif',
@@ -105,9 +104,10 @@ def plotting_article_plot(tas, court_long, court_lat):
 
     ax.plot(court_long, court_lat, 'kx', transform=transform, markersize=4)
     ax.add_feature(ten_metre_borders)
+    ax.text(40000, 1120000, '2080', fontdict={'size': 16})
     
     fig.colorbar(im, ax=ax, orientation='vertical', \
-        label="2080 air temperature anomaly (C\u00B0)")
+        label="1.5m air temperature anomaly (C\u00B0)")
     
     plt.tight_layout()
     plt.savefig('rmets_article/plots/anomaly_plot.png')
