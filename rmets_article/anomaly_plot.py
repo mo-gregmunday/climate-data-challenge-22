@@ -67,6 +67,7 @@ def get_lat_long(court_long, court_lat):
     
     
 def calculate_baseline_avg(tas):
+    # Select first 20 years (1981-2000)
     baseline_period = tas[:20]
     baseline_avg = baseline_period.collapsed('time', iris.analysis.MEAN)
     
@@ -107,7 +108,7 @@ def plotting_article_plot(tas, court_long, court_lat):
     ax.text(40000, 1120000, '2080', fontdict={'size': 16})
     
     fig.colorbar(im, ax=ax, orientation='vertical', \
-        label="1.5m air temperature anomaly (C\u00B0)")
+        label="1.5m air temperature anomaly (\u00B0C)")
     
     plt.tight_layout()
     plt.savefig('rmets_article/plots/anomaly_plot.png')

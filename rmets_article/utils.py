@@ -1,7 +1,7 @@
 import iris
 from iris.analysis.geometry import geometry_area_weights
 from iris.util import mask_cube
-import numpy as np#
+import numpy as np
 import cartopy
 from cartopy.feature import NaturalEarthFeature
 from shapely.ops import unary_union
